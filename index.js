@@ -1,11 +1,9 @@
 /*
-  Behavior:
-  - Master mode: starts an Express health server and spawns child processes (workers).
-  - Worker mode (--worker): each worker creates one Mineflayer bot.
-  - Bots get random usernames & passwords, register/login, then AFK forever.
-  - Intended for YOUR OWN server. Do not use on public ones.
-
-  Perfect for Render + GitHub + UptimeRobot (Express keeps it alive).
+  Multi AFK Bot for your own Minecraft server.
+  - Spawns many Mineflayer bots (60+)
+  - Each bot uses random username & password
+  - Bots just /register and /login then AFK forever
+  - Includes Express endpoint for Render + UptimeRobot
 */
 
 const fs = require('fs');
@@ -137,6 +135,5 @@ function startWorker() {
     bot.chat(`/register ${pw} ${pw}`);
     setTimeout(() => bot.chat(`/register ${pw}`), 800);
     setTimeout(() => bot.chat(`/login ${pw}`), 1600);
-    setTimeout(() => bot.chat(config.serverCommand || '/server servival'), config.afterLoginDelayMs || 2500);
   }
-           }
+                 }
